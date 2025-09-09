@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { Message } from './types/Message';
 import { handleSendMessage } from './utils/chat';
+import ReactMarkdown from 'react-markdown';
 
 
 const App: React.FC = () => {
@@ -47,7 +48,7 @@ const App: React.FC = () => {
                     : 'bg-gray-200 text-gray-800 rounded-bl-none'
                 }`}
               >
-                {message.content}
+                <ReactMarkdown>{message.content}</ReactMarkdown>
               </div>
             </div>
           ))}
