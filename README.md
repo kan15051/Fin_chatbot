@@ -55,6 +55,14 @@ Install the dependencies.
 ```bash
 npm install
 ```
+Create a .env file in the backend folder.
+```bash
+touch .env
+```
+Add your Gemini API key to the .env file:
+```bash
+GEMINI_API_KEY=your_api_key_here
+```
 Start the development server.
 ```bash
 npm run start
