@@ -35,7 +35,7 @@ const handleSendMessage = async (
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             // body: JSON.stringify({ message: newMessage.content }),
-            body: JSON.stringify({ message: "hi, how are you" }),
+            body: JSON.stringify({ message: newMessage.content }),
         });
 
         if (!response.ok) {

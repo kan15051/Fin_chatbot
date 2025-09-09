@@ -14,11 +14,12 @@ const llm = new ChatGoogleGenerativeAI({
 });
 
 async function getAIResponse(userMessage) {
+  console.log(userMessage);
   try {
     const response = await llm.invoke([
       { role: "user", content: userMessage }
     ]);
-
+    console.log(response);
     return {
       role: "ai",
       content: response.content  // response from the model

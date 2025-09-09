@@ -16,18 +16,6 @@ const App: React.FC = () => {
     }
   }, [messages]);
 
-  // useEffect(() => {
-  //   fetch("http://localhost:3000/api/ai/messages", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ message: input }),
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => console.log("TEST RESPONSE:", data))
-  //     .catch(err => console.error("FETCH FAILED:", err));
-  // }, [messages]);
-
-
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleSendMessage(input, setMessages, setInput);
