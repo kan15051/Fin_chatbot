@@ -1,7 +1,8 @@
 import express from "express";
 import cors from "cors";
 import fs from "fs";
-import path from "path";
+import { getAIResponse } from "./llm.js";
+
 const app = express();
 const port = 3000;
 
@@ -26,7 +27,7 @@ app.post('/api/messages', (req, res) => {
 
         try {
             const messages = JSON.parse(data);
-            const newMessage = { message};
+            const newMessage = message;
             messages.push(newMessage);
 
             fs.writeFile(filePath, JSON.stringify(messages, null, 2), 'utf8', (err) => {
@@ -41,6 +42,22 @@ app.post('/api/messages', (req, res) => {
             res.status(500).json({ error: 'Failed to parse JSON data.' });
         }
     });
+});
+
+app.post('/api/ai/messages', async (req, res) => {
+  const { message } = req.body;
+
+  if (!message) {
+    return res.status(400).json({ error: 'Missing message in request body' });
+  }
+
+  try {
+    const aiMessage = await getAIResponse(message);
+    res.json(aiMessage);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to get AI response" });
+  }
 });
 
 app.listen(port, () => {

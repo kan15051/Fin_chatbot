@@ -1,0 +1,4 @@
+{
+  "watch": ["server.js", "llm.js"],
+  "ignore": ["message.json", "node_modules"]
+}
